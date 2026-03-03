@@ -8,23 +8,55 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+      background: linear-gradient(-45deg, #1e1e2f, #2c2c54, #3b3b98, #1e3799);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating circles decoration */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      animation: floatUp 15s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
     }
 
     .container {
       width: 90%;
       max-width: 400px;
+      z-index: 2;
     }
 
     h1 {
       font-size: 22px;
       margin-bottom: 20px;
+      animation: textColorShift 4s linear infinite;
+    }
+
+    @keyframes textColorShift {
+      0% { color: #ff6b81; }
+      25% { color: #70a1ff; }
+      50% { color: #7bed9f; }
+      75% { color: #ffa502; }
+      100% { color: #ff6b81; }
     }
 
     .status {
@@ -60,6 +92,13 @@
   </style>
 </head>
 <body>
+
+  <!-- Decorative floating bubbles -->
+  <div class="bubble" style="width:60px;height:60px;left:10%;animation-duration:18s;"></div>
+  <div class="bubble" style="width:40px;height:40px;left:30%;animation-duration:12s;"></div>
+  <div class="bubble" style="width:80px;height:80px;left:70%;animation-duration:20s;"></div>
+  <div class="bubble" style="width:50px;height:50px;left:85%;animation-duration:15s;"></div>
+
   <div class="container">
     <h1>Sama Emotional Cycle™</h1>
 
@@ -73,12 +112,12 @@
 
   <script>
     const stages = [
-      "😄 She Texted! Life is awesome.",
+      "😄 She Texted! Life is good.",
       "😐 Wait… she texted him too.",
       "😔 Overthinking has begun.",
       "😭 I don’t think she cares about me bro.",
-      "🧠 I give motivational speech.",
-      "😌 Stability restored. I’m kinda okay now.",
+      "🧠 You give motivational speech.",
+      "😌 Stability restored. I’m fine now.",
       "🔁 Resetting cycle for tomorrow..."
     ];
 
